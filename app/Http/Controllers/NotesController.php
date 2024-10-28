@@ -9,7 +9,7 @@ class NotesController extends Controller
 {
     
     public function index(){
-        $notes = Note::latest()->get();
+        $notes = Note::latest()->get(); 
         return view('index', ['notes' => $notes]);
     }
     public function show(Note $note)
@@ -27,22 +27,35 @@ class NotesController extends Controller
 
         $newNoteS = Note::create($validatedData);
 
-        return redirect(route('notes.index'));
+        return redirect(route('notes.index'))->with('success', 'Notes Successfully Created');
 
     }
-
-    public function edit(Note $note){
-        return view('edit', ['note' => $note]);
+    public function indexEdit(Note $note){
+        return view('index-edit', ['note' => $note]);
     }
 
-    public function update(Note $note, Request $request){
+    public function indexUpdate(Note $note, Request $request){
         $validatedData = $request->validate([
             'title' => 'nullable|string|max:100',
             'content' => 'required|string|min:1|max:10000'
         ]);
 
         $note->update($validatedData);
-        return redirect(route('notes.index'))->with('success', 'Notes Successfully Edited');
+        return redirect(route('notes.index', ['note' => $note]))->with('success', 'Notes Successfully Edited');
+    }
+
+    public function viewEdit(Note $note){
+        return view('view-edit', ['note' => $note]);
+    }
+
+    public function viewUpdate(Note $note, Request $request){
+        $validatedData = $request->validate([
+            'title' => 'nullable|string|max:100',
+            'content' => 'required|string|min:1|max:10000'
+        ]);
+
+        $note->update($validatedData);
+        return redirect(route('notes.view', ['note' => $note]))->with('success', 'Notes Successfully Edited');
     }
 
     public function delete(Note $note){

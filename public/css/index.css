@@ -1,137 +1,317 @@
-/* General body styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Lexend', sans-serif;
+    background-color: #282b35;
+    color: white;
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
     flex-direction: column;
-    color: #333;
 }
 
-/* Center the heading */
+.home-button {
+    position: fixed;
+    top: 20px;
+    left: 30px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #4A90E2;
+    border-radius: 50%;
+    border: none;
+    text-decoration: none;
+    color: white;
+    font-size: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+    z-index: 1000000;       
+}
+
+.home-button span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 50px;
+    text-align: center;
+}
+
+.home-button:hover {
+    color: #000000;
+    background-color: #fff7f7;
+}
+
 .title {
     position: sticky;
     top: 0;
-    background-color: #f4f4f4;
-    padding: 10px;
+    background-color: #474747;
+    padding: 20px;
     text-align: center;
     width: 100%;
-    z-index: 1000;
     font-size: 2em;
-    color: #2c3e50;
+    color: #afd9df;
+    z-index: 10;
 }
 
-/* Container for notes in a single column */
 .notes-container {
-    display: flex;
-    flex-direction: column;
-    align-items: right;
-    gap: 20px;
+    align-self: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 55px 15px;
     padding: 20px;
     width: 100%;
-    max-width: 600px;
+    max-width: 1350px;
+    background-color: none;
 }
 
-/* Note link styles */
 .note-link {
     text-decoration: none;
     width: 100%;
 }
 
-/* Individual note card styles */
 .note-card {
-    background-color: #fff;
+    position: relative;
+    background-color: #333;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
+    color: #a1a0a0;
+    border: 1px solid rgb(0, 0, 0);
+    width: 100%;
     transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     text-align: left;
-    width: 100%;
-    overflow: hidden; 
-    text-overflow: ellipsis; 
-    white-space: nowrap; 
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    height: 150%;
 }
 
-/* Card hover effect */
 .note-card:hover {
     transform: translateY(-5px);
-    background-color: #ecf0f1;
+    background-color: #173e50;
 }
 
-/* Title and content styling */
 .note-card p {
-    font-size: 1.2em; /* Adjusted for better readability */
-    color: #7f8c8d;
-    line-height: 1.5em;
-    margin-bottom: 10px;
-    text-overflow: ellipsis;
-    overflow: hidden; /* Hide text overflow */
-}
-
-.note-card h2 {
     font-size: 1.2em;
-    color: #2c3e50;
-    margin-top: 7px;
-    white-space: nowrap; /* Ensure the title stays in one line */
-    text-overflow: ellipsis; /* Show ellipsis if the title is too long */
+    color: #f769df;
+    line-height: 1.2em;
+    text-overflow: ellipsis;
     overflow: hidden;
 }
 
-/* Success message styling */
-.success-message {
-    background-color: #d4edda;
-    color: #155724;
-    padding: 15px;
+.note-card h2 {
+    font-size: 1.5em;
+    font-weight: bolder;
+    color: #81deeb;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.note-desc {
+    position: absolute;
+    left: 8px;
+    bottom: 10px;
+    font-size: 1em;
+}
+
+.options {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 5;
+}
+
+.options-icon {
+    position: relative;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.options-icon:hover::after {
+    content: 'Options';
+    position: absolute;
+    right: 10px;
+    background-color: black;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    font-size: 0.75em;
+    z-index: 10;
+}
+
+.buttons {
+    position: absolute;
+    right: 10px;
+    background-color: #474747;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 20;
+    display: none;
+    padding: 10px;
     border-radius: 5px;
-    border: 1px solid #c3e6cb;
-    margin-bottom: 20px;
-    text-align: center;
-    width: 100%;
 }
 
-/* Add new note button */
+.buttons form {
+    margin: 0;
+    padding: 0;
+}
+
+.edit-button, .delete-button {
+    background-color: #81deeb;
+    color: white;
+    width: 30px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 5px;
+    margin: 5px 0;
+    display: block;
+}
+
+.edit-button:hover {
+    color: #000000;
+    background-color: #f3fdff;
+}
+
+.delete-button:hover {
+    color: #000000;
+    background-color: #ff4d4d;
+}
+
+.edit-button:hover::after {
+    content: 'Edit Note';
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    background-color: black;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    font-size: 0.8em;
+    z-index: 10000000;
+}
+
+.delete-button:hover::after {
+    content: 'Delete Note';
+    position: absolute;
+    top: 10;
+    right: 50px;
+    background-color: black;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    font-size: 0.8em;
+    z-index: 10;
+}
+
 .add-note {
-    position: sticky;
-    text-align: center;
-    margin-top: 20px;
-    float: right;
-    margin-right: 20px;
-}
-
-.add-note button {
-    position: sticky;
+    position: fixed;
+    bottom: 30px;
+    left: 47%;
+    z-index: 100000;
     background-color: #3498db;
     color: white;
+    font-size: 2.5em;
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 50%;
     cursor: pointer;
+    transition: background-color 0.2s;
+    height: 80px;
+    width: 80px;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
 }
 
-.add-note button:hover {
-    background-color: #2980b9;
+.add-note span { 
+    display: block;
+    width: 100%;
+    height: 100%;
+    align-self: center;
+    justify-self: center;
 }
 
-.add-note button a {
-    color: white;
-    text-decoration: none;
+.add-note:hover {
+    background-color: #fff7f7;
 }
 
-.add-note button a:hover {
-    text-decoration: underline;
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
 }
 
-/* Responsive behavior */
+::-webkit-scrollbar-track {
+    background: #fff7f7;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #fff7f7;
+    box-shadow: 0px 0px 4px 2px #282f38 inset;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #02050b;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+}
+
+.success-message {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border-left: 5px solid #3e8e41;
+    font-size: 1em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    max-width: 80%;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.success-message::before {
+    content: '✔️';
+    text-align: center;
+    justify-content: center;
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+.success-message {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 @media (max-width: 768px) {
-    .note-card {
-        width: 100%;
+    .notes-container {
+        grid-template-columns: 1fr;
     }
 
     .add-note button {
@@ -140,5 +320,56 @@ body {
 
     .notes-container {
         width: 100%;
+    }
+
+    .add-note {
+        right: 10px; 
+        width: 45px; 
+        height: 45px; 
+        font-size: 22px; 
+    }
+    .change-background-container {
+        width: 10%;
+        right: 10px;
+        top: 10px;
+    }
+    .note-card h2 {
+        font-size: 1.2em; /* Adjust title size */
+    }
+
+    .note-card p {
+        font-size: 1em; /* Adjust note content size */
+    }
+
+    .note-desc {
+        font-size: 0.9em; /* Smaller font size for the description */
+    }
+    .add-note {
+        width: 60px;
+        height: 60px;
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 768px) {
+
+}
+
+@media (max-width: 480px) {
+    .add-note {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5em;
+    }
+    .note-card h2 {
+        font-size: 1em; /* Further adjust title size for very small screens */
+    }
+
+    .note-card p {
+        font-size: 0.9em; /* Further adjust note content size */
+    }
+
+    .note-desc {
+        font-size: 0.8em; /* Even smaller font size for the description */
     }
 }

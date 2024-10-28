@@ -1,126 +1,345 @@
-/* General body styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+* {
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #333;
+    box-sizing: border-box;
 }
 
-/* Sticky title for view page */
-.sticky-title {
+body {
+    font-family: 'Lexend', sans-serif;
+    background-color: #282b35;
+    display: flex;
+    flex-direction: column;
+    color: rgb(245, 243, 243);
+    height: 100vh; 
+}
+
+.title {
     position: sticky;
     top: 0;
-    background-color: #f4f4f4;
-    padding: 10px;
-    text-align: center;
-    width: 100%;
-    z-index: 1000;
-    font-size: 2em;
-    color: #2c3e50;
-    border-bottom: 1px solid #ddd;
-}
-
-/* Container for the view note page */
-.note-view-container {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #474747;
     padding: 20px;
-    margin-top: 20px;
+    text-align: center;
     width: 100%;
-    max-width: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    overflow: hidden; 
-}
-
-.note-content {
-    font-size: 1.5em;
-    max-height: 300px;
-    overflow-y: auto; 
-    white-space: pre-wrap; 
-    overflow-wrap: break-word;
-    margin-bottom: 20px;
-    width: 100%; 
-}
-
-.note-title {
-    font-size: 1.2em;
-    color: #2c3e50;
-    margin-bottom: 20px;
-    width: 100%; 
-    text-align: left;
-}
-
-/* Buttons for Edit, Delete, Back */
-.note-actions {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-}
-
-.button {
-    background-color: #3498db;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.2s ease-in-out;
-}
-
-.button:hover {
-    background-color: #2980b9;
-}
-
-/* Specific styles for delete button */
-.delete-button {
-    background-color: #e74c3c;
-}
-
-.delete-button:hover {
-    background-color: #c0392b;
-}
-
-/* Back to Notes button */
-.back-button-container {
-    margin-top: 20px;
-    text-align: center;
+    font-size: 2em;
+    color: #afd9df;
 }
 
 .back-button {
-    background-color: #95a5a6;
+    position: fixed;
+    top: 20px;
+    left: 30px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #4A90E2;
+    border-radius: 50%;
+    border: none;
+    text-decoration: none;
+    color: white;
+    font-size: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+    z-index: 1000000;
+    cursor: pointer;
+}
+
+.back-button span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 50px;
+    text-align: center;
 }
 
 .back-button:hover {
-    background-color: #7f8c8d;
+    color: #000000;
+    background-color: #fff7f7; 
 }
 
-/* Form for the delete button */
+.note-view-container {
+    background-color: #333;
+    border-radius: 12px; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
+    padding: 30px; 
+    margin-top: 10px; 
+    width: 90vw; 
+    height: 83vh; 
+    min-height: 80vh; 
+    max-height: 90vh; 
+    color: #a1a0a0;
+    border: 1px solid rgb(0, 0, 0); 
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    text-align: left;
+    overflow: hidden;
+}
+
+.note-content {
+    font-size: 1.2em; 
+    color: #000000; 
+    background-color: #ffffff;
+    border-radius: 5px;
+    height: 80vh;
+    margin-top: 20px;
+    white-space: pre-wrap;
+    overflow-y: auto;
+}
+
+.note-title {
+    font-size: 2em; 
+    font-weight: bold;
+    color: #afd9df; 
+    text-align: left;
+}
+
+.desc-note {
+    font-style: italic;
+    font-size: 0.8em; 
+    margin-top: 2px;   
+}
+
+.char-count {
+    display: inline-block;
+    font-style: italic;
+}
+
+.note-view-container hr {
+    margin-top: 3px;
+}
+
+.note-actions {
+    position: fixed;
+    bottom: 20px;
+    right: 10vw;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    z-index: 10;
+}
+
+.edit-button, .delete-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #4A90E2;
+    border-radius: 50%;
+    border: none;
+    text-decoration: none;
+    color: white;
+    font-size: 30px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000000;   
+}
+
+.edit-button:hover {
+    color: #000000;
+    background-color: #fff7f7;
+}
+
+.delete-button:hover {
+    color: #000000;
+    background-color: #c0392b;
+}
+
 .delete-form {
     display: inline-block;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
+.success-message {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border-left: 5px solid #3e8e41;
+    font-size: 1em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 80%;
+    margin: 20px auto;
+    justify-content: center;
+    text-align: center;
+}
+
+.success-message::before {
+    content: '✔️';
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+.success-message {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #474747;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #fff7f7;
+    box-shadow: 0px 0px 4px 2px #282f38 inset;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #02050b;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.success-message {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@media (max-width: 1024px) {
     .note-view-container {
-        width: 100%;
+        width: 95vw;
+        height: 90vh;
+        min-height: 80vh;
+        max-height: 90vh;
+        padding: 20px;
     }
 
-    .button {
-        width: 100%;
-        text-align: center;
+    .note-content {
+        font-size: 1em;
+    }
+
+    .note-title {
+        font-size: 1.5em;
     }
 
     .note-actions {
         flex-direction: column;
+        bottom: 10px;
+        right: 5vw;
+    }
+
+    .edit-button, .delete-button {
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+    }
+
+    .change-background-container {
+        width: 30%;
+        right: 10px;
+        top: 10px;
+    }
+
+    .success-message {
+        font-size: 0.9em;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 1.5em;
+        padding: 15px;
+    }
+
+    .note-view-container {
+        width: 95vw;
+        height: 83vh;
+        min-height: 80vh;
+        max-height: 90vh;
+        padding: 15px;
+    }
+
+    .note-content {
+        font-size: 0.9em;
+    }
+
+    .note-title {
+        font-size: 1.2em;
+    }
+
+    .back-button {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+    }
+
+    .note-actions {
+        flex-direction: column;
+        bottom: 10px;
+        right: 5vw;
+    }
+
+    .edit-button, .delete-button {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+    }
+
+
+    .success-message {
+        font-size: 0.8em;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .note-view-container {
+        width: 95vw;
+        min-height: 85vh;
+        max-height: 90vh;
+        padding: 10px;
+    }
+
+    .note-title {
+        font-size: 1em;
+    }
+
+    .note-content {
+        font-size: 0.8em;
+    }
+
+
+    .edit-button, .delete-button {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+    }
+
+    .success-message {
+        font-size: 0.7em;
+        padding: 6px;
     }
 }
